@@ -1,0 +1,504 @@
+/* CSS Reset and Global Styles */
+:root {
+  /* Reference Colors: d62828, ff595e, 00509d, ced4da */
+  --color-primary: #00509d; /* Dark Blue from ref */
+  --color-primary-dark: #003f7a;
+  --color-secondary: #3d7db9; /* Deep Red from ref */
+  --color-bg-light: #f4f7f6; /* Light Grey BG */
+  --color-bg-dark: #ffffff;
+  --color-text: #2c3e50;
+  --color-shadow: rgba(0, 0, 0, 0.1);
+
+  /* Color for skeleton base */
+  --color-skeleton-light: #ced4da;
+
+  --header-height: 60px;
+  --navbar-height: 65px;
+  --font-family: "Source Sans 3", sans-serif;
+}
+
+* {
+  font-family: var(--font-family), "Anek Bangla", "Gill Sans", "Gill Sans MT",
+    Calibri, "Trebuchet MS", sans-serif;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--color-bg-light);
+  color: var(--color-text);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* 1] Header Styling */
+#app-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--header-height);
+  background-color: var(--color-bg-dark);
+  box-shadow: 0 2px 4px var(--color-shadow);
+  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 16px;
+}
+
+#header-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-primary-dark);
+}
+
+#user-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-align: right;
+  font-size: 0.85rem;
+}
+
+#user-initial {
+  width: 25px;
+  height: 25px;
+  background-color: var(--color-secondary);
+  color: var(--color-bg-dark);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 17px;
+  font-weight: 700;
+  box-shadow: 0 0 0 3px var(--color-secondary), 0 0 0 7px #134e86f9;
+  /* Using secondary color for avatar ring */
+}
+
+/* 3] Navbar Styling (Android bottom nav like) */
+#bottom-navbar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: var(--navbar-height);
+  background-color: var(--color-bg-dark);
+  box-shadow: 0 -2px 4px var(--color-shadow);
+  z-index: 10;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.nav-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 0;
+  cursor: pointer;
+  transition: color 0.3s, background-color 0.3s;
+  font-size: 0.75rem;
+  color: var(--color-text);
+  user-select: none;
+  text-decoration: none; /* Important for accessibility */
+}
+
+.nav-item:hover {
+  color: var(--color-primary);
+}
+
+.nav-item.active {
+  color: var(--color-primary);
+  background-color: rgba(
+    0,
+    80,
+    157,
+    0.08
+  ); /* Using primary color with transparency */
+  border-top: 2px solid var(--color-primary);
+  padding-top: 6px;
+}
+
+.nav-icon {
+  font-size: 1.2rem;
+  margin-bottom: 4px;
+}
+
+/* 2] Main Content Styling */
+#main-content {
+  flex-grow: 1;
+  padding: calc(var(--header-height) + 16px) 16px
+    calc(var(--navbar-height) + 16px) 16px;
+  /* Ensure content respects fixed header and navbar */
+  min-height: calc(100vh - var(--header-height) - var(--navbar-height));
+  overflow-y: auto;
+}
+
+.content-section {
+  padding: 11px;
+  background-color: var(--color-bg-dark);
+  border-radius: 12px;
+  box-shadow: 0 4px 10px var(--color-shadow);
+  margin-bottom: 20px;
+}
+
+h2 {
+  font-size: 1.75rem;
+  margin-bottom: 20px;
+  color: var(--color-primary-dark);
+  border-bottom: 2px solid var(--color-skeleton-light);
+  padding-bottom: 10px;
+}
+
+/* Utility Classes */
+.text-center {
+  text-align: center;
+}
+.text-lg {
+  font-size: 1.125rem;
+}
+.mt-4 {
+  margin-top: 1rem;
+}
+.mb-4 {
+  margin-bottom: 1rem;
+}
+
+/* Lock Screen Styling */
+#lock-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 40vh;
+  text-align: center;
+}
+
+.lock-icon {
+  font-size: 3rem;
+  color: var(--color-primary);
+  margin-bottom: 10px;
+}
+
+.lock-button {
+  background-color: var(--color-primary);
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: background-color 0.3s, transform 0.1s;
+}
+
+.lock-button:hover {
+  background-color: var(--color-primary-dark);
+}
+
+.lock-button:active {
+  transform: scale(0.98);
+}
+
+/* Notice List Styling */
+.notice-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.notice-item {
+  padding: 15px;
+  border: 1px solid var(--color-skeleton-light);
+  border-radius: 8px;
+  transition: box-shadow 0.3s;
+  background-color: #fcfcfc;
+}
+
+.notice-item:hover {
+  box-shadow: 0 4px 8px var(--color-shadow);
+}
+
+.notice-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px dashed var(--color-skeleton-light);
+  padding-bottom: 8px;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.notice-date {
+  font-size: 0.85rem;
+  color: var(--color-primary);
+}
+
+.notice-title {
+  font-size: 1rem;
+  color: var(--color-text);
+}
+
+.notice-text {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: #555;
+}
+
+/* Report Table Styling */
+.report-table {
+  position: relative;
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 17px;
+  border-radius: 7px;
+  overflow: hidden; /* For rounded corners */
+}
+
+.report-table th,
+.report-table td {
+  padding: 12px 10px;
+  text-align: left;
+  border-bottom: 1px solid var(--color-skeleton-light);
+}
+
+.report-table th {
+  background-color: var(--color-primary);
+  color: white;
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+}
+
+.report-table tr:nth-child(even) {
+  background-color: #f7f7f7;
+}
+
+.report-table tr:hover {
+  background-color: #eaf6ff;
+}
+
+.status-paid {
+  color: var(--color-secondary); /* Using Deep Red for secondary/paid */
+  font-weight: 600;
+}
+
+.status-pending {
+  color: #ff595e; /* Using Bright Red from ref for pending */
+  font-weight: 600;
+}
+
+/* Account Form Styling */
+.account-form-container {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid var(--color-skeleton-light);
+  border-radius: 12px;
+}
+
+.account-form-container input[type="text"],
+.account-form-container input[type="password"],
+.account-form-container input[type="number"] {
+  /* Added number type */
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid var(--color-skeleton-light);
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+.account-form-container button {
+  width: 100%;
+  background-color: var(
+    --color-primary
+  ); /* Use primary color for main action */
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: background-color 0.3s;
+}
+
+.account-form-container button:hover {
+  background-color: var(--color-primary-dark);
+}
+
+/* Logout button style overrides */
+.account-form-container button[style*="#e74c3c"] {
+  background-color: var(--color-secondary) !important;
+}
+.account-form-container button[style*="#e74c3c"]:hover {
+  background-color: #d62828 !important;
+}
+
+.form-message {
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  display: none;
+}
+
+.form-message.success {
+  background-color: #d4edda;
+  color: #155724;
+  display: block;
+}
+
+.form-message.error {
+  background-color: #f8d7da;
+  color: #721c24;
+  display: block;
+}
+
+.form-link {
+  display: block;
+  text-align: center;
+  margin-top: 15px;
+  color: var(--color-primary);
+  text-decoration: none;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+/* --- SKELETON LOADER STYLING --- */
+#loader-container {
+  display: none; /* Hidden by default, shown during transition */
+  padding-top: 20px;
+}
+
+.skeleton-box {
+  background-color: var(--color-skeleton-light); /* ced4da */
+  border-radius: 4px;
+  margin-bottom: 10px;
+  overflow: hidden; /* For shimmer effect */
+  position: relative;
+  height: 1.2em; /* Default line height */
+}
+
+/* Shimmer animation */
+.skeleton-box::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.4) 30%,
+    rgba(255, 255, 255, 0.6) 50%,
+    rgba(255, 255, 255, 0.4) 70%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  animation: shimmer 1.5s infinite linear;
+}
+
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* Specific Skeleton Structure Styles */
+.skeleton-list-item {
+  padding: 15px;
+  border: 1px solid var(--color-skeleton-light);
+  border-radius: 8px;
+  margin-bottom: 15px;
+  background-color: var(--color-bg-dark);
+}
+
+.skeleton-list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 8px;
+  margin-bottom: 8px;
+  border-bottom: 1px dashed var(--color-skeleton-light);
+}
+
+.skeleton-text-line {
+  height: 12px;
+  margin-bottom: 8px;
+}
+
+.skeleton-text-line.short {
+  width: 60%;
+}
+
+.skeleton-text-line.medium {
+  width: 85%;
+}
+
+.skeleton-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+}
+
+.skeleton-table-header {
+  display: flex;
+  background-color: var(--color-primary);
+  color: white;
+  padding: 12px 10px;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+.skeleton-table-header .skeleton-box {
+  height: 15px;
+  margin: 0;
+}
+
+.skeleton-table-row {
+  display: flex;
+  padding: 12px 10px;
+  background-color: #fcfcfc;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.skeleton-table-row:nth-child(even) {
+  background-color: #f7f7f7;
+}
+
+.skeleton-table-row > div {
+  flex: 1;
+  padding: 0 5px;
+}
+
+.skeleton-table-row .skeleton-box {
+  height: 12px;
+  margin: 0;
+}
+
+/* Media Queries for Responsiveness */
+@media (min-width: 600px) {
+  #main-content {
+    max-width: 800px;
+    margin: 0 auto; /* Center content on larger screens */
+    padding-top: calc(var(--header-height) + 24px);
+    padding-bottom: calc(var(--navbar-height) + 24px);
+  }
+
+  .content-section {
+    padding: 30px;
+  }
+
+  #app-header,
+  #bottom-navbar {
+    padding: 0 24px;
+  }
+}
